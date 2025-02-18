@@ -1,3 +1,7 @@
+library(janitor)
+library(readxl)
+library(readr)
+library(dplyr)
 
 # cargar ----
 concejales <- read_xlsx("datos/datos_originales/2024_10_Concejales_DatosEleccion.xlsx", 
@@ -39,59 +43,7 @@ cores_2 <- cores |>
 
 
 
-# concejales ----
-
-## comuna ----
-concejales_2 |> 
-  group_by(region, comuna, genero) |> 
-  summarize(n = n()) |> 
-  mutate(p = n/sum(n))
-
-## region ----
-concejales_2 |> 
-  group_by(region, genero) |> 
-  summarize(n = n()) |> 
-  mutate(p = n/sum(n))
-
-## pais ----
-concejales_2 |> 
-  group_by(genero) |> 
-  summarize(n = n()) |> 
-  mutate(p = n/sum(n))
-
-
-# alcaldes ----
-
-## region ----
-alcaldes_2 |> 
-  group_by(region, genero) |> 
-  summarize(n = n()) |> 
-  mutate(p = n/sum(n))
-
-## pais ----
-alcaldes_2 |> 
-  group_by(genero) |> 
-  summarize(n = n()) |> 
-  mutate(p = n/sum(n))
-
-
-
-# cores ----
-## comuna ----
-cores_2 |> 
-  group_by(region, comuna, genero) |> 
-  summarize(n = n()) |> 
-  mutate(p = n/sum(n))
-
-## region ----
-cores_2 |> 
-  group_by(region, genero) |> 
-  summarize(n = n()) |> 
-  mutate(p = n/sum(n))
-
-## pais ----
-cores_2 |> 
-  group_by(genero) |> 
-  summarize(n = n()) |> 
-  mutate(p = n/sum(n))
-
+# guardar ----
+write_csv2(concejales_2, "datos/resultados_servel_2024_concejales.csv")
+write_csv2(alcaldes_2, "datos/resultados_servel_2024_alcaldes.csv")
+write_csv2(cores_2, "datos/resultados_servel_2024_cores.csv")

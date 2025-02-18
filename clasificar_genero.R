@@ -58,6 +58,8 @@ genero2 <- genero |>
                              "ANAHI" ~ "femenino",
                              "NANO" ~ "masculino",
                              "OSIEL" ~ "masculino",
+                             "BERNES" ~ "masculino",
+                             "ALEN" ~ "masculino",
                              .default = genero))
 
 
