@@ -60,8 +60,10 @@ genero2 <- genero |>
                              "OSIEL" ~ "masculino",
                              "BERNES" ~ "masculino",
                              "ALEN" ~ "masculino",
+                             "JAVIERA PAZ" ~ "femenino",
                              .default = genero))
 
 
 # guardar resultados
 readr::write_rds(genero2, "genero.rds")
+# genero <- readr::read_rds("genero.rds")

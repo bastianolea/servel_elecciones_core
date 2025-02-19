@@ -27,19 +27,25 @@ genero <- readr::read_rds("genero.rds")
 # limpiar ----
 
 concejales_2 <- concejales |>
+  # solo electos
   filter(!is.na(cargo)) |>
   left_join(genero, by = "nombres") |>
   select(region, comuna, lista, pacto, nombres, primer_apellido, votos, genero)
 
 alcaldes_2 <- alcaldes |>
+  # solo electos
   filter(!is.na(cargo)) |>
   left_join(genero, by = "nombres") |>
   select(region, comuna, lista, pacto, nombres, primer_apellido, votos, genero)
 
 cores_2 <- cores |>
+  # solo electos
   filter(!is.na(cargo)) |>
+  # sumar por región
+  group_by(region, lista, pacto, nombres, primer_apellido) |> 
+  summarize(votos = sum(votos)) |> 
   left_join(genero, by = "nombres") |>
-  select(region, comuna, lista, pacto, nombres, primer_apellido, votos, genero)
+  select(region, lista, pacto, nombres, primer_apellido, votos, genero)
 
 
 
