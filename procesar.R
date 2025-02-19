@@ -44,7 +44,6 @@ comunas <- read_rds("datos/cut_comuna.rds") |>
   )
 
 
-
 # limpiar ----
 concejales_2 <- concejales |>
   corregir_comunas() |> 
