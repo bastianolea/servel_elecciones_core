@@ -79,11 +79,10 @@ tema_barras_horizontales <- list(
         plot.title.position = "plot")
 )
 
-grafico_regiones <- function(data) {
-  data |> 
-    ggplot(aes(x = p, y = nombre_region, fill = genero)) +
+grafico_regiones <- function(data, variable = "p", corte = 30) {
+  plot <- data |> 
+    ggplot(aes(x = !!sym(variable), y = nombre_region, fill = genero)) +
     geom_col(color = "white", linewidth = 0.7, width = .7) +
-    geom_text(aes(label = percent(p, 1)), position = position_stack(vjust = 0.5), color = "white", fontface = "bold") +
     theme_void() +
     theme(axis.text.y = element_text(hjust = 1)) +
     scale_y_discrete(labels = label_wrap(30)) +
@@ -91,4 +90,18 @@ grafico_regiones <- function(data) {
     guides(fill = guide_none()) +
     scale_fill_manual(values = c("masculino" = masculino, "femenino" = femenino)) +
     scale_y_discrete(limits = rev) 
+  
+  if (variable == "p") {
+  plot <- plot +
+    geom_text(aes(label = percent(p, 1)), position = position_stack(vjust = 0.5), color = "white", fontface = "bold")
+  } else {
+    # browser()
+    plot <- plot +
+      geom_text(aes(label = ifelse(n > corte | genero == "masculino", n, "")), position = position_stack(vjust = 0.5), color = "white", fontface = "bold") +
+      geom_text(aes(label = ifelse(n <= corte & genero == "femenino", paste("    ", n), ""),
+                    color = genero), 
+                position = position_stack(vjust = 1), color = femenino, fontface = "bold") +
+      scale_x_continuous(expand = expansion(c(0.02, 0.03)))
+  }
+    
 }
