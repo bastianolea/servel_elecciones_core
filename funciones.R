@@ -1,3 +1,6 @@
+library(ggplot2)
+library(ggtext)
+
 masculino = "#957dad"
 femenino = "#d291bc"
 
