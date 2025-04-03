@@ -228,7 +228,7 @@ for (.region in 1:16) {
   grafico_conteo + plot_spacer() + grafico_porcentaje +
     plot_layout(nrow = 1, widths = c(3, .06, .7)) +
     plot_annotation(caption = "Fuente: Servicio Electoral de Chile, resultados electorales de Consejeros Regionales 2024") &
-    theme(plot.caption = element_text(family = "gobCL", coloR = "#7F7F7F"))
+    theme(plot.caption = element_text(family = "gobCL", color = "#7F7F7F"))
     # theme(plot.margin = margin(b = 4, r = 4, l = 4)) +
 
   
