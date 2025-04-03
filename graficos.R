@@ -59,18 +59,18 @@ for (.region in 1:16) {
          x = NULL)
     # canvas(n_partidos*0.8, 1+(max_votos*0.8))
   
-  ggsave(paste0("graficos/cores_", .region, ".jpg"), width = n_partidos*0.8, height = 1+(max_votos*0.8))
+  # ggsave(paste0("graficos/cores_", .region, ".jpg"), width = n_partidos*0.8, height = 1+(max_votos*0.8))
 }
 
-cores_conteo_unc
-
-cores_region |> 
-  pivot_longer(cols = c(nombres, partido, pacto))
-
-
-cores_region |> 
-  filter(partido == "Independientes") |> 
-  count(pacto)
+# cores_conteo_unc
+# 
+# cores_region |> 
+#   pivot_longer(cols = c(nombres, partido, pacto))
+# 
+# 
+# cores_region |> 
+#   filter(partido == "Independientes") |> 
+#   count(pacto)
 
 
 # género ----
@@ -135,7 +135,7 @@ for (.region in 1:16) {
   canvas(n_partidos*0.8, 1+(max_votos*0.8))
   
   # ggsave(paste0("graficos/cores_genero_", .region, ".jpg"), width = n_partidos*0.8, height = 1+(max_votos*0.8))
-  save_ggplot(last_plot(), paste0("graficos/cores_genero_", .region, ".jpg"), width = n_partidos*0.8, height = 1+(max_votos*0.8))
+  # save_ggplot(last_plot(), paste0("graficos/cores_genero_", .region, ".jpg"), width = n_partidos*0.8, height = 1+(max_votos*0.8))
 }
 
 
