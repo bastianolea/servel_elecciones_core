@@ -56,6 +56,7 @@ for (.region in 1:16) {
     labs(title = "Consejeros regionales",
          subtitle = nombre_region,
          y = "Consejeros Regionales electos",
+         caption = "Fuente: Servicio Electoral de Chile",
          x = NULL)
     # canvas(n_partidos*0.8, 1+(max_votos*0.8))
   
@@ -131,6 +132,7 @@ for (.region in 1:16) {
     labs(title = "Consejeros regionales",
          subtitle = nombre_region,
          y = "Consejeros Regionales electos",
+         caption = "Fuente: Servicio Electoral de Chile",
          x = NULL) +
   canvas(n_partidos*0.8, 1+(max_votos*0.8))
   
@@ -192,7 +194,7 @@ for (.region in 1:16) {
     theme(plot.margin = margin(t = 6, b = 12, l = 6, r = 0)) +
     theme(axis.text.x = element_text(size = 9, lineheight = .8, face = "bold", vjust = 1)) +
     theme(plot.subtitle = element_text(family = "gobCL-Heavy")) +
-    theme(legend.position.inside = c(.95, 1.04),
+    theme(legend.position.inside = c(.98, 1.04),
           legend.justification = c(1, 1),
           legend.text = element_text(margin = margin(l = 3))) +
     labs(title = "Consejeros regionales",
@@ -224,8 +226,13 @@ for (.region in 1:16) {
   
   # unir
   grafico_conteo + plot_spacer() + grafico_porcentaje +
-    plot_layout(nrow = 1, widths = c(3, .06, .7))
+    plot_layout(nrow = 1, widths = c(3, .06, .7)) +
+    plot_annotation(caption = "Fuente: Servicio Electoral de Chile, resultados electorales de Consejeros Regionales 2024") &
+    theme(plot.caption = element_text(family = "gobCL", coloR = "#7F7F7F"))
+    # theme(plot.margin = margin(b = 4, r = 4, l = 4)) +
+
   
-  save_ggplot(last_plot(), paste0("graficos/cores_genero_porcentaje_", .region, ".jpg"), width = 2.2+(n_partidos*0.8), height = 1+(max_votos*0.8))
+  save_ggplot(last_plot(), paste0("graficos/cores_genero_porcentaje_", .region, ".jpg"),
+              width = 2.2+(n_partidos*0.8), height = 1+(max_votos*0.8))
 }
  

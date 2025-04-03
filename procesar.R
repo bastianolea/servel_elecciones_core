@@ -6,6 +6,9 @@ library(stringr)
 
 source("funciones.R")
 
+# https://www.servel.cl/centro-de-datos/resultados-electorales-historicos-gw3/
+
+
 # cargar ----
 cores <- read_xlsx("datos/datos_originales/2024_10_ConsejerosRegionales_DatosEleccion.xlsx", 
                    sheet = "Votación por comuna", 
